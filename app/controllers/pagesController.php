@@ -1,12 +1,16 @@
 <?php
 
-class PagesController{
+class PagesController extends Controller{
     public function index(){
-        echo "Bienvenido!";
+        $this->render_spa();
+    }
+
+    public function home(){
+        $this->render('home');
     }
 
     public function listar(){
-        echo "Listar!";
+        $this->render('listar');
     }
 
     public function editar(){
@@ -19,6 +23,10 @@ class PagesController{
 
     public function crear(){
         echo "Crear!";
+    }
+
+    public function saludo(){
+        echo "Hola Mundo";
     }
 }
 
