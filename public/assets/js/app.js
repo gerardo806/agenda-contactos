@@ -1,7 +1,7 @@
-const $app = document.getElementById("app");
+//const $app = document.getElementById("app");
 
 //AJAX
-const xhr = new XMLHttpRequest();
+/* const xhr = new XMLHttpRequest();
 
 xhr.addEventListener("readystatechange", function() {
     if(this.readyState != 4) return;
@@ -11,4 +11,20 @@ xhr.addEventListener("readystatechange", function() {
 });
 
 xhr.open("GET", "http://localhost/agenda-contactos-php-mysql/public/pages/home");
-xhr.send();
+xhr.send(); */
+
+(() => {
+    const $main = document.getElementById("app");
+    async function getData(){
+        try {
+            const response = await axios.get("http://localhost/agenda-contactos-php-mysql/public/pages/home");
+            $main.innerHTML = response.data;
+        } catch (error) {
+            const msg = error.response.statusText || "Ocurrio un problema";
+            console.log(msg);
+            console.log(error.response.status);
+        }
+    }
+
+    getData();
+})();
