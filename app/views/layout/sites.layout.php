@@ -19,6 +19,7 @@
 
     <script src="<?=URL_PATH?>/assets/lib/js/axios.min.js"></script>
     <script src="<?=URL_PATH?>/assets/lib/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=URL_PATH?>/assets/js/navbar/navbar.js"></script>
     <script src="<?=URL_PATH?>/assets/js/app.js"></script>
 </body>
 
