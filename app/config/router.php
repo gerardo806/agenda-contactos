@@ -20,7 +20,7 @@
             }else {
                 $this->controller = "error";
                 $this->controller = $this->controller ."Controller";
-                $this->method = "error404";
+                $this->method = "error";
                 $path_file_controller = __DIR__ . "/../controllers/" . $this->controller . ".php";
                 require_once($path_file_controller);
             }
@@ -34,7 +34,7 @@
             } catch (\Throwable $th) {
                 $this->controller = "error";
                 $this->controller = $this->controller ."Controller";
-                $this->method = "error404";
+                $this->method = "error";
                 $path_file_controller = __DIR__ . "/../controllers/" . $this->controller . ".php";
                 require_once($path_file_controller);
                 $controller = new $this->controller();

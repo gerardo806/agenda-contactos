@@ -9,8 +9,8 @@
             require_once(__DIR__ . "/../views/$view/$path.view.php");
         }
 
-        protected function render_spa(){
-            require_once(__DIR__. "/../views/layout/sites.layout.php");
+        protected function render_spa($layout ="sites"){
+            require_once(__DIR__. "/../views/layout/$layout.layout.php");
         }
 
         
