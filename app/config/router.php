@@ -15,7 +15,10 @@
 
             $this->controller = $this->controller ."Controller";
 
-            require_once(__DIR__ . "/../controllers/" . $this->controller . ".php");
+            $path_file_controller = __DIR__ . "/../controllers/" . $this->controller . ".php";
+            if (is_readable($path_file_controller)) {
+                require_once($path_file_controller);
+            }else echo "Error 404";
         }
 
         public function run(){
