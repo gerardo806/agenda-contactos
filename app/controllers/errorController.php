@@ -1,6 +1,6 @@
 <?php
 
-class errorController extends Controller
+class ErrorController extends Controller
 {
     public function error(){
         $this->render_spa("error");
