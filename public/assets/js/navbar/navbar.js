@@ -1,3 +1,4 @@
+//Enlaces
 const $inicio = document.getElementById("inicio"),
     $nuevo_contacto = document.getElementById("nuevo-contacto"),
     $contactos = document.getElementById("contactos"),
@@ -14,14 +15,12 @@ const $inicio = document.getElementById("inicio"),
     $municipios = document.getElementById("municipios")
 
 $inicio.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en inicio...");
+    getView("pages", "home");
 });
 
 //***********CONTACTOS****************
 $nuevo_contacto.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en nuevo-contacto...");
+    getView("contact", "nuevo_contacto");
 });
 
 $contactos.addEventListener("click", (e) => {
@@ -31,8 +30,7 @@ $contactos.addEventListener("click", (e) => {
 
 //**********USUARIOS****************
 $nuevo_usuario.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en nuevo-usuario...");
+    getView("usuario", "nuevo_usuario");
 });
 
 $usuarios.addEventListener("click", (e) => {

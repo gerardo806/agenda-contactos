@@ -1,6 +1,18 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Agenda Personal</a>
+    <a class="navbar-brand" href="#">Agenda</a>
+    <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item mx-2">
+          <a class="nav-link active" aria-current="page" href="#">🏠</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="#">📜</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="#">📖</a>
+        </li>
+      </ul>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>

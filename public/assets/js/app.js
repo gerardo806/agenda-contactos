@@ -13,18 +13,4 @@ xhr.addEventListener("readystatechange", function() {
 xhr.open("GET", "http://localhost/agenda-contactos-php-mysql/public/pages/home");
 xhr.send(); */
 
-(() => {
-    const $main = document.getElementById("app");
-    async function getData(){
-        try {
-            const response = await axios.get("http://localhost/agenda-contactos-php-mysql/public/pages/home");
-            $main.innerHTML = response.data;
-        } catch (error) {
-            const msg = error.response.statusText || "Ocurrio un problema";
-            console.log(msg);
-            console.log(error.response.status);
-        }
-    }
-
-    getData();
-})();
+getView("pages", "home");
