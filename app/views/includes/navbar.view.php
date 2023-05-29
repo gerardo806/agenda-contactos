@@ -1,15 +1,15 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Agenda</a>
+    <a class="navbar-brand" href="#">📒 Agenda</a>
     <ul class="navbar-nav d-flex flex-row">
         <li class="nav-item mx-2">
-          <a class="nav-link active" aria-current="page" href="#">🏠</a>
+          <a class="nav-link active" aria-current="page" id="inicio-nav" href="#">🏠 Inicio</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link active" href="#">📜</a>
+          <a class="nav-link active" id="contacto-nav" href="#">📜 Contacto</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link active" href="#">📖</a>
+          <a class="nav-link active" href="#">📖 Lista</a>
         </li>
       </ul>
 
@@ -18,7 +18,7 @@
     </button>
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Administración</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Panel de Administración</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">

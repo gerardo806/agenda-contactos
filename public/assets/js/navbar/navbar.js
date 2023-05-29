@@ -12,10 +12,24 @@ const $inicio = document.getElementById("inicio"),
     $nuevo_depto = document.getElementById("nuevo-depto"),
     $deptos = document.getElementById("deptos"),
     $nuevo_municipio = document.getElementById("nuevo-municipio"),
-    $municipios = document.getElementById("municipios")
+    $municipios = document.getElementById("municipios"),
+    $inicio_nav = document.getElementById("inicio-nav"),
+    $contacto_nav = document.getElementById("contacto-nav");
+
+//****************Navbar*******************
+
+$inicio_nav.addEventListener("click", (e) => {
+    getView("pages", "home");
+});
+
+//---------------------------------------------------------------
 
 $inicio.addEventListener("click", (e) => {
     getView("pages", "home");
+});
+
+$contacto_nav.addEventListener("click", (e) => {
+    getView("contact", "nuevo_contacto");
 });
 
 //***********CONTACTOS****************
