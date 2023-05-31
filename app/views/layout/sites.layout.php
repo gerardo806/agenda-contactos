@@ -23,6 +23,7 @@
     <script src="<?=URL_PATH?>/assets/js/helpers.js"></script>
     <script src="<?=URL_PATH?>/assets/js/navbar/navbar.js"></script>
     <script src="<?=URL_PATH?>/assets/js/app.js"></script>
+    <div id="script"></div>
 </body>
 
 </html>

@@ -14,7 +14,8 @@ const $inicio = document.getElementById("inicio"),
     $nuevo_municipio = document.getElementById("nuevo-municipio"),
     $municipios = document.getElementById("municipios"),
     $inicio_nav = document.getElementById("inicio-nav"),
-    $contacto_nav = document.getElementById("contacto-nav");
+    $contacto_nav = document.getElementById("contacto-nav"),
+    url = uriProject();
 
 //****************Navbar*******************
 
@@ -45,6 +46,7 @@ $contactos.addEventListener("click", (e) => {
 //**********USUARIOS****************
 $nuevo_usuario.addEventListener("click", (e) => {
     getView("usuario", "nuevo_usuario");
+    insertScript(`${url}/assets/js/usuario/nuevo_usuario.view.js`);
 });
 
 $usuarios.addEventListener("click", (e) => {
@@ -100,3 +102,5 @@ $municipios.addEventListener("click", (e) => {
     //e.preventDefault();
     console.log("click en municipios...");
 });
+
+console.log(location.href);
