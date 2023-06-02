@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . "/../core/controller.php");
 require_once(__DIR__ . "/../models/user.model.php");
 
 class UsuarioController extends Controller 
