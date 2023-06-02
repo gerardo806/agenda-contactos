@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../core/model.php");
+require_once(__DIR__ . "/db/connect.php");
 class UserModel implements Model
 {
     private int $id_usuario;

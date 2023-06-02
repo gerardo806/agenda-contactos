@@ -7,7 +7,3 @@
         todo tipo de contacto y acceder a los mismos facilmente.
     </p>
 </div>
-
-<?php
-require_once(__DIR__ . "/../../models/db/connect.php");
-?>

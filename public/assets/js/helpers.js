@@ -5,6 +5,7 @@ function getView(controller, method, script) {
             try {
                 const response = await axios.get("http://localhost/agenda-contactos-php-mysql/public/"+controller+"/"+method);
                 $main.innerHTML = response.data;
+                script();
             } catch (error) {
                 const msg = error.response.statusText || "Ocurrio un problema";
                 console.log(msg);
@@ -13,7 +14,7 @@ function getView(controller, method, script) {
         }
     
         getData();
-        script();
+        //script();
     })();
     return $main;
 }

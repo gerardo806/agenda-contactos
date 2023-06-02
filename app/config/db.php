@@ -13,7 +13,7 @@ class DBConnect
                 'root',
                 $optPDO
             );
-            echo "Conexion Abierta";
+            //echo "Conexion Abierta";
         }
         return self::$db;
     }
