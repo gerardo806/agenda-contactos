@@ -15,6 +15,9 @@
 <body>
     <?php require_once(__DIR__ . "/../includes/navbar.view.php");?>
 
+    <!--Alert-->
+    <?php require_once(__DIR__ . "/../includes/alert.view.php");?>
+
     <!-- Content -->
     <main class="container my-5 py-3" id="app"></main>
 
