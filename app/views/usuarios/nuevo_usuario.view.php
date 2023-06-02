@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-4" id="nuevo-usuario">
     <h1 class="text-center">Nuevo Usuario</h1>
     <div class="col-lg-6 col-md-6 col-sm-12 offset-md-3 offset-lg-3 mt-3">
         <article class="card">
@@ -16,7 +16,7 @@
                                     <input name="nombreUsuario" id="nombreUsuario" type="text"
                                         class="form-control mt-2">
                                 </label>
-                                <div class="form-text">El usuario debe ser único.</div>
+                                <div class="form-text">El usuario debe ser único, Ej: sammy23.</div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label w-100">

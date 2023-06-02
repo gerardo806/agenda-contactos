@@ -1,4 +1,4 @@
-function getView(controller, method) {
+function getView(controller, method, script) {
     const $main = document.getElementById("app");
     (() => {
         async function getData(){
@@ -13,8 +13,30 @@ function getView(controller, method) {
         }
     
         getData();
+        script();
     })();
     return $main;
+}
+
+function requestPost(controller, method, data) {
+     return (() => {
+        async function getData(){
+            try {
+                const response = await axios.post(
+                    "http://localhost/agenda-contactos-php-mysql/public/"+controller+"/"+method,
+                    data    
+                );
+                 //console.log(response.data);
+                 return response.data;
+            } catch (error) {
+                const msg = error.response.statusText || "Ocurrio un problema";
+                console.log(msg);
+                console.log(error.response.status);
+                return msg;
+            }
+        }
+        return getData();
+    })();
 }
 
 function uriProject(){
@@ -52,4 +74,14 @@ function alertWarning(msg){
     $msg_content.innerHTML = "";
     $msg_content.insertAdjacentText("afterbegin", msg);
     toast.show();
+}
+
+function expRegName(txt){
+    const exp_reg = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/ig
+    return exp_reg.test(txt);
+}
+
+function expRegUser(txt){
+    const exp_reg = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]*([0-9]*)$/ig
+    return exp_reg.test(txt);
 }

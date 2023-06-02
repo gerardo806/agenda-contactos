@@ -13,4 +13,4 @@ xhr.addEventListener("readystatechange", function() {
 xhr.open("GET", "http://localhost/agenda-contactos-php-mysql/public/pages/home");
 xhr.send(); */
 
-getView("pages", "home");
+getView("pages", "home", () => {});

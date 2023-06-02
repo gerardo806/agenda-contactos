@@ -45,8 +45,9 @@ $contactos.addEventListener("click", (e) => {
 
 //**********USUARIOS****************
 $nuevo_usuario.addEventListener("click", (e) => {
-    getView("usuario", "nuevo_usuario");
-    insertScript(`${url}/assets/js/usuario/nuevo_usuario.view.js`);
+    getView("usuario", "nuevo_usuario", () => {
+        insertScript(`${url}assets/js/usuario/nuevo_usuario.view.js`);
+    });
 });
 
 $usuarios.addEventListener("click", (e) => {
@@ -103,4 +104,4 @@ $municipios.addEventListener("click", (e) => {
     console.log("click en municipios...");
 });
 
-console.log(location.href);
+//console.log(location.href);
