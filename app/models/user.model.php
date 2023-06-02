@@ -25,7 +25,7 @@ class UserModel implements Model
 
 	public function save(): void
 	{
-		//
+		echo "guardando...";
 	}
 
 	public static function getOne($id)

@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . "/../models/user.model.php");
 
 class UsuarioController extends Controller 
 {
@@ -11,15 +12,21 @@ class UsuarioController extends Controller
             header('Content-Type: application/json');
             $data = json_decode(file_get_contents("php://input"), true);
 
-            $user = [
+            /* $user = [
                 "nombreUsuario" => $data['nombreUsuario'],
                 "nombreCompleto" => $data['nombreCompleto'],
                 "correo" => $data['correo'],
-                "clave" => $data['clave']
+                "clave" => $data['clave'],
+                "claveEncriptada" => password_hash($data['clave'], PASSWORD_BCRYPT)
             ];
             
-            echo json_encode($user); 
-            //echo json_encode($data);
+            echo json_encode($user); */
+            $new_user = new UserModel(
+                $data['nombreUsuario'], 
+                $data['nombreCompleto'], 
+                $data['correo'], $data['clave']
+            );
+            $new_user->save();
         }
     }
 }
