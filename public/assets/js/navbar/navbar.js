@@ -20,22 +20,22 @@ const $inicio = document.getElementById("inicio"),
 //****************Navbar*******************
 
 $inicio_nav.addEventListener("click", (e) => {
-    getView("pages", "home");
+    getView("pages", "home", () => {});
 });
 
 //---------------------------------------------------------------
 
 $inicio.addEventListener("click", (e) => {
-    getView("pages", "home");
+    getView("pages", "home", () => {});
 });
 
 $contacto_nav.addEventListener("click", (e) => {
-    getView("contact", "nuevo_contacto");
+    getView("contact", "nuevo_contacto", () => {});
 });
 
 //***********CONTACTOS****************
 $nuevo_contacto.addEventListener("click", (e) => {
-    getView("contact", "nuevo_contacto");
+    getView("contact", "nuevo_contacto", () => {});
 });
 
 $contactos.addEventListener("click", (e) => {

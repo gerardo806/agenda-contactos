@@ -27,7 +27,14 @@ class UsuarioController extends Controller
                 $data['nombreCompleto'], 
                 $data['correo'], $data['clave']
             );
-            $new_user->save();
+            try {
+                $new_user->save();
+                echo json_encode(array("msg" => "usuario guardado"));
+            } catch(PDOException $ex) {
+                echo 'Error conectando a la BBDD. '.$ex->getMessage(); 
+            } catch (\Throwable $th) {
+                echo json_encode(array("msg" => "ocurrio un error: " . $th->getMessage()));
+            }
         }
     }
 }

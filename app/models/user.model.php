@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__ . "/../core/model.php");
-require_once(__DIR__ . "/db/connect.php");
+require_once(__DIR__ . '/../config/db.php');
+
+$db = DBConnect::connected();
 class UserModel implements Model
 {
     private int $id_usuario;
@@ -9,6 +11,8 @@ class UserModel implements Model
     private string $correo;
     private string $clave;
     private int $estado;
+
+	private $db;
     
     public function __construct(
         string $nombreUsuario,
@@ -21,12 +25,23 @@ class UserModel implements Model
         $this->nombreCompleto = $nombreCompleto;
         $this->correo = $correo;
         $this->clave = $clave;
-        $this->estado = 1;   
+        $this->estado = 1;
+		$this->db = DBConnect::connected();
     }
 
 	public function save(): void
 	{
-		echo "guardando...";
+		//global $db;
+		$sql = "INSERT INTO usuario(nombreUsuario, nombreCompleto, correo, clave, estado) VALUES(?,?,?,?,?)";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(
+			$this->nombreUsuario,
+			$this->nombreCompleto,
+			$this->correo,
+			$this->clave,
+			$this->estado
+		));
+		//echo "guardado...";
 	}
 
 	public static function getOne($id)

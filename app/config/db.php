@@ -2,7 +2,7 @@
 
 class DBConnect
 {
-    private static $db = NULL;
+    protected static $db = NULL;
     public static function connected()
     {
         if (!isset(self::$db)) {
