@@ -8,6 +8,10 @@ class UsuarioController extends Controller
         return $this->render("nuevo_usuario", "usuarios");
     }
 
+    public function lista_usuarios(){
+        return $this->render("lista_usuarios", "usuarios");
+    }
+
     public function guardar_usuario(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             header('Content-Type: application/json');
@@ -35,6 +39,16 @@ class UsuarioController extends Controller
             } catch (\Throwable $th) {
                 echo json_encode(array("msg" => "ocurrio un error: " . $th->getMessage()));
             }
+        }
+    }
+
+    public function obtener_usuarios(){
+        header('Content-Type: application/json');
+        try {
+            UserModel::connect_db();
+            echo json_encode(UserModel::getAll());
+        } catch (\Throwable $th) {
+            echo json_encode(array("error" => $th->getMessage()));
         }
     }
 }

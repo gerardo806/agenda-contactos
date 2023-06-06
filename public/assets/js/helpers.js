@@ -19,6 +19,24 @@ function getView(controller, method, script) {
     return $main;
 }
 
+function requestGet(controller, method) {
+    return (() => {
+        async function getData(){
+            try {
+                const response = await axios.get("http://localhost/agenda-contactos-php-mysql/public/"+controller+"/"+method);
+                return response.data;
+            } catch (error) {
+                const msg = error.response.statusText || "Ocurrio un problema";
+                console.log(msg);
+                console.log(error.response.status);
+                return msg;
+            }
+        }
+    
+        return getData();
+    })();
+}
+
 function requestPost(controller, method, data) {
      return (() => {
         async function getData(){

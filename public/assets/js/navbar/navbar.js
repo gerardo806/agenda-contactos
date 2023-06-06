@@ -51,8 +51,9 @@ $nuevo_usuario.addEventListener("click", (e) => {
 });
 
 $usuarios.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en usuarios...");
+    getView("usuario", "lista_usuarios", () => {
+        insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+    });
 });
 
 //**********ROL****************

@@ -2,8 +2,7 @@
 require_once(__DIR__ . "/../core/model.php");
 require_once(__DIR__ . '/../config/db.php');
 
-$db = DBConnect::connected();
-class UserModel implements Model
+class UserModel extends DBConnect implements Model
 {
     private int $id_usuario;
     private string $nombreUsuario;
@@ -11,8 +10,6 @@ class UserModel implements Model
     private string $correo;
     private string $clave;
     private int $estado;
-
-	private $db;
     
     public function __construct(
         string $nombreUsuario,
@@ -26,14 +23,17 @@ class UserModel implements Model
         $this->correo = $correo;
         $this->clave = $clave;
         $this->estado = 1;
-		$this->db = DBConnect::connected();
+		self::connected();
     }
+
+	public static function connect_db(){
+		self::connected();
+	}
 
 	public function save(): void
 	{
-		//global $db;
 		$sql = "INSERT INTO usuario(nombreUsuario, nombreCompleto, correo, clave, estado) VALUES(?,?,?,?,?)";
-		$query = $this->db->prepare($sql);
+		$query = self::$db->prepare($sql);
 		$query->execute(array(
 			$this->nombreUsuario,
 			$this->nombreCompleto,
@@ -41,7 +41,6 @@ class UserModel implements Model
 			$this->clave,
 			$this->estado
 		));
-		//echo "guardado...";
 	}
 
 	public static function getOne($id)
@@ -51,14 +50,20 @@ class UserModel implements Model
 
 	public static function getAll()
 	{
-		//
+		$sql = "SELECT id_usuario, nombreUsuario, nombreCompleto, correo FROM usuario u WHERE estado = 1";
+		$query = self::$db->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll(PDO::FETCH_OBJ);
+		if ($query->rowCount() > 0) {
+			return $result;
+		}
+		return [0];
 	}
 
 	public static function delete($id): void
 	{
 		//
 	}
-
 	public function getId_usuario(): int {
 		return $this->id_usuario;
 	}
