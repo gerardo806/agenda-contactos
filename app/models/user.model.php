@@ -86,7 +86,12 @@ class UserModel extends DBConnect implements Model
 
 	public static function delete($id): void
 	{
-		//
+		$sql = "UPDATE usuario SET estado=? WHERE id_usuario=?";
+		$query = self::$db->prepare($sql);
+		$query->execute(array(
+			0,
+			$id
+		));
 	}
 	public function getId_usuario(): int
 	{

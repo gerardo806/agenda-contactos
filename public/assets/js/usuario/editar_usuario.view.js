@@ -55,7 +55,14 @@ $btn_save.addEventListener("click", (e) => {
       };
       //console.log(form);
       const res = requestPost("usuario", "actualizar_usuario", form);
-      res.then((data) => console.log(data)).catch((err) => console.log(err));
+      res
+        .then((data) =>{
+          console.log(data);
+          getView("usuario", "lista_usuarios", () => {
+            insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+          });
+        })
+        .catch((err) => console.log(err));
     }
   }
 });

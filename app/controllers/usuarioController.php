@@ -82,6 +82,22 @@ class UsuarioController extends Controller
         }
     }
 
+    public function eliminar_usuario(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            header('Content-Type: application/json');
+            $id = json_decode(file_get_contents("php://input"), true);
+            //echo json_encode(["id" => $id["id"]]);
+
+            try {
+                UserModel::connect_db();
+                UserModel::delete($id["id"]);
+                echo json_encode(array("msg" => "eliminado"));
+            } catch (\Throwable $th) {
+                echo json_encode(array("error" => $th->getMessage()));
+            }
+        }
+    }
+
     public function obtener_usuarios(){
         header('Content-Type: application/json');
         try {

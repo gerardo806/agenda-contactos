@@ -58,6 +58,27 @@ function requestPost(controller, method, data) {
     })();
 }
 
+function requestDelete(controller, method, id) {
+    return (() => {
+       async function getData(){
+           try {
+               const response = await axios.post(
+                   "http://localhost/agenda-contactos-php-mysql/public/"+controller+"/"+method,
+                   id 
+               );
+                //console.log(response.data);
+                return response.data;
+           } catch (error) {
+               const msg = error.response.statusText || "Ocurrio un problema";
+               console.log(msg);
+               console.log(error.response.status);
+               return msg;
+           }
+       }
+       return getData();
+   })();
+}
+
 function uriProject(){
     let url = location.href;
     url = url.split("#");

@@ -1,4 +1,4 @@
-<h1>Lista Usuarios</h1>
+<h1 class="text-center mt-3">Lista Usuarios</h1>
 <div class="table-responsive">
 <table class="table">
   <thead>
