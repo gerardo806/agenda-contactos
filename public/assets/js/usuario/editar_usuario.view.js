@@ -57,10 +57,13 @@ $btn_save.addEventListener("click", (e) => {
       const res = requestPost("usuario", "actualizar_usuario", form);
       res
         .then((data) =>{
-          console.log(data);
-          getView("usuario", "lista_usuarios", () => {
-            insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
-          });
+          if (data === 1) {
+            getView("usuario", "lista_usuarios", () => {
+              insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+            });
+          }else{
+            alertWarning("No se pudo actualizar el usuario, puede que el correo o el usuario ya esten registrados en otra cuenta");
+          }
         })
         .catch((err) => console.log(err));
     }

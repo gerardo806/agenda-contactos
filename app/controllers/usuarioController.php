@@ -67,8 +67,8 @@ class UsuarioController extends Controller
                 $data['clave']
             );
             try {
-                $new_user->save();
-                echo json_encode(array("msg" => "usuario guardado"));
+                $res = $new_user->save();
+                echo json_encode(array("msg" => $res));
             } catch (PDOException $ex) {
                 echo 'Error conectando a la BBDD. ' . $ex->getMessage();
             } catch (\Throwable $th) {
@@ -104,8 +104,8 @@ class UsuarioController extends Controller
             $new_user->setId_usuario($data['id_usuario']);
 
             try {
-                $new_user->save();
-                echo json_encode(array("msg" => "usuario actualizado"));
+                $res = $new_user->save();
+                echo json_encode(array("msg" => $res));
             } catch (PDOException $ex) {
                 echo 'Error conectando a la BBDD. ' . $ex->getMessage();
             } catch (\Throwable $th) {

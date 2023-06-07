@@ -47,13 +47,13 @@ $contactos.addEventListener("click", (e) => {
 //**********USUARIOS****************
 $nuevo_usuario.addEventListener("click", (e) => {
     getView("usuario", "nuevo_usuario", () => {
-        insertScript(`${url}assets/js/usuario/nuevo_usuario.view.js`);
+        insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/nuevo_usuario.view.js`);
     });
 });
 
 $usuarios.addEventListener("click", (e) => {
     getView("usuario", "lista_usuarios", () => {
-        insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+        insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
     });
 });
 

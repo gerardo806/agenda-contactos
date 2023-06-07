@@ -32,7 +32,8 @@ class UserModel extends DBConnect implements Model
 		self::connected();
 	}
 
-	public static function login($credenciales){
+	public static function login($credenciales)
+	{
 		$sql = "SELECT id_usuario, nombreUsuario, nombreCompleto, correo, clave FROM usuario u WHERE estado = 1 AND nombreUsuario=? AND clave=? LIMIT 1";
 		$query = self::$db->prepare($sql);
 		$query->execute(array(
@@ -41,7 +42,7 @@ class UserModel extends DBConnect implements Model
 		));
 		$result = $query->fetchAll(PDO::FETCH_OBJ);
 		if ($query->rowCount() > 0) {
-			foreach ($result as $row){
+			foreach ($result as $row) {
 				$_SESSION["user"] = $row->nombreUsuario;
 				$_SESSION["nombre"] = $row->nombreCompleto;
 				$_SESSION["correo"] = $row->correo;
@@ -52,19 +53,46 @@ class UserModel extends DBConnect implements Model
 		return [0];
 	}
 
-	public function save(): void
+	public static function getByName($name)
 	{
+		$sql = "SELECT id_usuario, nombreUsuario FROM usuario WHERE estado = 1 AND nombreUsuario =? OR correo=? LIMIT 1";
+		$query = self::$db->prepare($sql);
+		$query->execute(array(
+			$name["nombreUsuario"],
+			$name["correo"],
+		));
+		$result = $query->fetchAll(PDO::FETCH_OBJ);
+		if ($query->rowCount() > 0) return $result;
+		return 0;
+	}
+
+	public function save()
+	{
+		$campos = ["nombreUsuario" => $this->nombreUsuario, "correo" => $this->correo];
 		if ($this->id_usuario == 0) {
-			$sql = "INSERT INTO usuario(nombreUsuario, nombreCompleto, correo, clave, estado) VALUES(?,?,?,?,?)";
-			$query = self::$db->prepare($sql);
-			$query->execute(array(
-				$this->nombreUsuario,
-				$this->nombreCompleto,
-				$this->correo,
-				$this->clave,
-				$this->estado
-			));
+			$result = self::getByName($campos);
+			if ($result != 0) return 0;
+			else {
+				$sql = "INSERT INTO usuario(nombreUsuario, nombreCompleto, correo, clave, estado) VALUES(?,?,?,?,?)";
+				$query = self::$db->prepare($sql);
+				$query->execute(array(
+					$this->nombreUsuario,
+					$this->nombreCompleto,
+					$this->correo,
+					$this->clave,
+					$this->estado
+				));
+				return 1;
+			}
 		} else {
+			$result = self::getByName($campos);
+			
+			if($result != 0){
+				foreach ($result as $row) {
+					if($row->id_usuario != $this->id_usuario) return 0;
+				}
+			}
+
 			if ($this->clave != "") {
 				$sql = "UPDATE usuario SET nombreUsuario=?, nombreCompleto=?, correo=?, clave=? WHERE id_usuario=?";
 				$query = self::$db->prepare($sql);

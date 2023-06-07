@@ -23,7 +23,7 @@ requestGet("usuario", "obtener_usuarios")
 
         $btn_edit.addEventListener("click", (e) => {
           getView("usuario", "editar_usuario", () => {
-            insertScript(`${url}assets/js/usuario/editar_usuario.view.js`);
+            insertScript(`${url}/assets/js/usuario/editar_usuario.view.js`);
           });
 
           delete user["editar"];
@@ -41,7 +41,7 @@ requestGet("usuario", "obtener_usuarios")
               console.log("Eliminado con exito");
               console.log(res);
               getView("usuario", "lista_usuarios", () => {
-                insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+                insertScript(`${url}/assets/js/usuario/lista_usuarios_view.js`);
               });
             })
             .catch((err) => {

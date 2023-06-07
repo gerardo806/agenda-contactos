@@ -36,13 +36,24 @@ $btn_save.addEventListener("click", (e) => {
       };
       //console.log(form);
       const res = requestPost("usuario", "guardar_usuario", form);
-      res.then((data) => console.log(data)).catch((err) => console.log(err));
+      res
+        .then((data) => {
+          console.log(data);
+          if (data["msg"] === "1") {
+            getView("usuario", "lista_usuarios", () => {
+              insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
+            });
+          }else{
+            alertWarning("No se pudo registrar el usuario, puede que el correo o el usuario ya esten registrados en otra cuenta");
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }
 });
 
 $enlace_tabla.addEventListener("click", (e) => {
   getView("usuario", "lista_usuarios", () => {
-    insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
+    insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
   });
 });
