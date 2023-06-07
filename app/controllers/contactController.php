@@ -11,6 +11,10 @@ class ContactController extends Controller
         return $this->render('lista_contactos', 'contact');
     }
 
+    public function guardar_contact(){
+        
+    }
+
     public function obtener_tipos_contactos(){
         header('Content-Type: application/json');
         try {

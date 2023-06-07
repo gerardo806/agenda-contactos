@@ -12,40 +12,37 @@ var warningFieldEmpty = (field) =>
 var warningFieldInvalid = (field) =>
   alertWarning(`El campo ${field} tiene caracteres invalidos.`);
 
-  requestGet("contact", "obtener_tipos_contactos")
-  .then((res) => {
-    fragment = document.createDocumentFragment();
-    for (const contact of res) {
-      $opt = document.createElement("option");
-      $opt.setAttribute("value", contact["id_tipo_contacto"]);
-      $opt.innerHTML = contact["nombre"];
-      fragment.appendChild($opt);
-    }
-    $selectTipoContacto.appendChild(fragment);
-  });
-
+requestGet("contact", "obtener_tipos_contactos").then((res) => {
+  fragment = document.createDocumentFragment();
+  for (const contact of res) {
+    $opt = document.createElement("option");
+    $opt.setAttribute("value", contact["id_tipo_contacto"]);
+    $opt.innerHTML = contact["nombre"];
+    fragment.appendChild($opt);
+  }
+  $selectTipoContacto.appendChild(fragment);
+});
 
 $btn_save_contacto.addEventListener("click", (e) => {
-  if ($nombreSimpleContacto.value === "") warningFieldEmpty("Nombre Usuario");
-  else if ($nombresContacto.value === "") warningFieldEmpty("Nombre Completo");
-  else if ($apellidosContactos.value === "") warningFieldEmpty("Correo");
-  else if ($selectTipoContacto.value === "") warningFieldEmpty("Clave");
-  else if ($contactoPersonal.value === "") warningFieldEmpty("Clave");
+  if ($nombreSimpleContacto.value === "") warningFieldEmpty("Nombre");
+  else if ($nombresContacto.value === "") warningFieldEmpty("Nombres");
+  else if ($apellidosContactos.value === "") warningFieldEmpty("Apellido");
+  else if ($selectTipoContacto.value === "0")
+    warningFieldEmpty("Seleccione un tipo de contacto");
+  else if ($contactoPersonal.value === "") warningFieldEmpty("Contacto");
   else {
-    if (!expRegUser($nombreSimpleContacto.value))
-      warningFieldInvalid("Nombre Usuario");
+    if (!expRegName($nombreSimpleContacto.value)) warningFieldInvalid("Nombre");
     else if (!expRegName($nombresContacto.value))
-      warningFieldInvalid("Nombre Completo");
-    else if ($selectTipoContacto.value.length < 4)
-      alertWarning("La clave tener 4 caracteres como minimo");
-    else if ($selectTipoContacto.value !== $contactoPersonal.value)
-      alertWarning("Las claves no son iguales");
+      warningFieldInvalid("Nombres");
+    else if (!expRegName($apellidosContactos.value))
+      warningFieldInvalid("Apellidos");
     else {
       const form = {
-        nombreUsuario: $nombreSimpleContacto.value,
-        nombreCompleto: $nombresContacto.value,
-        correo: $apellidosContactos.value,
-        clave: $selectTipoContacto.value,
+        nombreSimpleContacto: $nombreSimpleContacto.value,
+        nombresContacto: $nombresContacto.value,
+        apellidosContactos: $apellidosContactos.value,
+        selectTipoContacto: $selectTipoContacto.value,
+        contactoPersonal: $contactoPersonal.value
       };
       //console.log(form);
       const res = requestPost("usuario", "guardar_usuario", form);
@@ -54,10 +51,14 @@ $btn_save_contacto.addEventListener("click", (e) => {
           console.log(data);
           if (data["msg"] === 1) {
             getView("usuario", "lista_usuarios", () => {
-              insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
+              insertScript(
+                `http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`
+              );
             });
-          }else{
-            alertWarning("No se pudo registrar el usuario, puede que el correo o el usuario ya esten registrados en otra cuenta");
+          } else {
+            alertWarning(
+              "No se pudo registrar el usuario, puede que el correo o el usuario ya esten registrados en otra cuenta"
+            );
           }
         })
         .catch((err) => console.log(err));
@@ -67,7 +68,9 @@ $btn_save_contacto.addEventListener("click", (e) => {
 
 $enlace_tabla_contacto.addEventListener("click", (e) => {
   getView("usuario", "lista_usuarios", () => {
-    insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
+    insertScript(
+      `http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`
+    );
   });
 });
 
