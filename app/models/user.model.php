@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once(__DIR__ . "/../core/model.php");
 require_once(__DIR__ . '/../config/db.php');
 
@@ -29,6 +30,26 @@ class UserModel extends DBConnect implements Model
 	public static function connect_db()
 	{
 		self::connected();
+	}
+
+	public static function login($credenciales){
+		$sql = "SELECT id_usuario, nombreUsuario, nombreCompleto, correo, clave FROM usuario u WHERE estado = 1 AND nombreUsuario=? AND clave=? LIMIT 1";
+		$query = self::$db->prepare($sql);
+		$query->execute(array(
+			$credenciales['usuario'],
+			$credenciales['clave']
+		));
+		$result = $query->fetchAll(PDO::FETCH_OBJ);
+		if ($query->rowCount() > 0) {
+			foreach ($result as $row){
+				$_SESSION["user"] = $row->nombreUsuario;
+				$_SESSION["nombre"] = $row->nombreCompleto;
+				$_SESSION["correo"] = $row->correo;
+			}
+
+			return $result;
+		}
+		return [0];
 	}
 
 	public function save(): void

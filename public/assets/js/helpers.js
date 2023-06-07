@@ -1,3 +1,42 @@
+function requestLogin(credenciales) {
+    return (() => {
+       async function getData(){
+           try {
+               const response = await axios.post(
+                   "http://localhost/agenda-contactos-php-mysql/public/usuario/loginIn",
+                   credenciales    
+               );
+                //console.log(response.data);
+                return response.data;
+           } catch (error) {
+               const msg = error.response.statusText || "Ocurrio un problema";
+               console.log(msg);
+               console.log(error.response.status);
+               return msg;
+           }
+       }
+       return getData();
+   })();
+}
+
+function requestExit() {
+    return (() => {
+       async function getData(){
+           try {
+               const response = await axios.get("http://localhost/agenda-contactos-php-mysql/app/config/exit.php" );
+                //console.log(response.data);
+                return response.data;
+           } catch (error) {
+               const msg = error.response.statusText || "Ocurrio un problema";
+               console.log(msg);
+               console.log(error.response.status);
+               return msg;
+           }
+       }
+       return getData();
+   })();
+}
+
 function getView(controller, method, script) {
     const $main = document.getElementById("app");
     (() => {

@@ -15,6 +15,7 @@ const $inicio = document.getElementById("inicio"),
     $municipios = document.getElementById("municipios"),
     $inicio_nav = document.getElementById("inicio-nav"),
     $contacto_nav = document.getElementById("contacto-nav"),
+    $exit_session = document.getElementById("exit-session"),
     url = uriProject();
 
 //****************Navbar*******************
@@ -103,6 +104,12 @@ $nuevo_municipio.addEventListener("click", (e) => {
 $municipios.addEventListener("click", (e) => {
     //e.preventDefault();
     console.log("click en municipios...");
+});
+
+//******************* PERFIL ************************
+$exit_session.addEventListener("click", (e) => {
+    requestExit();
+    location.href = "http://localhost/agenda-contactos-php-mysql/public/usuario/login";
 });
 
 //console.log(location.href);

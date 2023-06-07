@@ -1,8 +1,7 @@
 <?php
     session_start();
-    var_dump($_SESSION['user']);
+    //var_dump($_SESSION['user']);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,6 +17,9 @@
 </head>
 
 <body>
+    <!--Alert-->
+    <?php require_once(__DIR__ . "/../includes/alert.view.php");?>
+
     <!-- Content -->
     <main class="container my-5 py-3" id="app">
         <div class="mt-4" id="nuevo-usuario">
@@ -35,7 +37,7 @@
                                     <div class="mb-3">
                                         <label class="form-label w-100">
                                             Nombre de Usuario
-                                            <input name="nombreUsuario" id="nombreUsuario" type="text"
+                                            <input name="user" id="user" type="text"
                                                 class="form-control mt-2">
                                         </label>
                                     </div>
@@ -44,12 +46,12 @@
                                     <div class="mb-3">
                                         <label class="form-label w-100">
                                             Clave de Usuario
-                                            <input name="clave" id="clave" type="password" class="form-control mt-2">
+                                            <input name="clave-user" id="clave-user" type="password" class="form-control mt-2">
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <button id="btn_login" type="button" class="btn btn-primary w-100">
+                            <button id="btn-login" type="button" class="btn btn-primary w-100">
                                 Iniciar sesión
                             </button>
                         </form>
@@ -65,7 +67,7 @@
     <script src="<?=URL_PATH?>/assets/lib/js/axios.min.js"></script>
     <script src="<?=URL_PATH?>/assets/lib/js/bootstrap.bundle.min.js"></script>
     <script src="<?=URL_PATH?>/assets/js/helpers.js"></script>
-    <div id="script"></div>
+    <script src="<?=URL_PATH?>/assets/js/usuario/login.view.js"></script>
 </body>
 
 </html>

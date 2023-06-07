@@ -1,26 +1,53 @@
 <?php
+    session_start();
 require_once(__DIR__ . "/../core/controller.php");
 require_once(__DIR__ . "/../models/user.model.php");
 
-class UsuarioController extends Controller 
+class UsuarioController extends Controller
 {
-    public function login(){
+    public function login()
+    {
         return $this->render("login", "usuarios");
     }
-    public function nuevo_usuario(){
+    public function nuevo_usuario()
+    {
         return $this->render("nuevo_usuario", "usuarios");
     }
 
-    public function editar_usuario(){
+    public function editar_usuario()
+    {
         return $this->render("editar_usuario", "usuarios");
     }
 
-    public function lista_usuarios(){
+    public function lista_usuarios()
+    {
         return $this->render("lista_usuarios", "usuarios");
     }
 
-    public function guardar_usuario(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    public function loginIn()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            header('Content-Type: application/json');
+            $credenciales = json_decode(file_get_contents("php://input"), true);
+            try {
+                UserModel::connect_db();
+                echo json_encode(UserModel::login($credenciales));
+            } catch (\Throwable $th) {
+                echo json_encode(array("error" => $th->getMessage()));
+            }
+        }
+    }
+
+    public function exit_usuario(){
+        session_start();
+		session_unset();
+		unset($_SESSION["user"]);
+		session_destroy();
+    }
+
+    public function guardar_usuario()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Content-Type: application/json');
             $data = json_decode(file_get_contents("php://input"), true);
 
@@ -34,23 +61,25 @@ class UsuarioController extends Controller
             
             echo json_encode($user); */
             $new_user = new UserModel(
-                $data['nombreUsuario'], 
-                $data['nombreCompleto'], 
-                $data['correo'], $data['clave']
+                $data['nombreUsuario'],
+                $data['nombreCompleto'],
+                $data['correo'],
+                $data['clave']
             );
             try {
                 $new_user->save();
                 echo json_encode(array("msg" => "usuario guardado"));
-            } catch(PDOException $ex) {
-                echo 'Error conectando a la BBDD. '.$ex->getMessage(); 
+            } catch (PDOException $ex) {
+                echo 'Error conectando a la BBDD. ' . $ex->getMessage();
             } catch (\Throwable $th) {
                 echo json_encode(array("msg" => "ocurrio un error: " . $th->getMessage()));
             }
         }
     }
 
-    public function actualizar_usuario(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    public function actualizar_usuario()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Content-Type: application/json');
             $data = json_decode(file_get_contents("php://input"), true);
 
@@ -64,29 +93,30 @@ class UsuarioController extends Controller
             ];
             
             echo json_encode($user); */
-            
-            $new_user = new UserModel( 
-                $data['nombreUsuario'], 
-                $data['nombreCompleto'], 
-                $data['correo'], 
-                empty($data['clave'])?'': $data['clave']
+
+            $new_user = new UserModel(
+                $data['nombreUsuario'],
+                $data['nombreCompleto'],
+                $data['correo'],
+                empty($data['clave']) ? '' : $data['clave']
             );
-            
+
             $new_user->setId_usuario($data['id_usuario']);
 
             try {
                 $new_user->save();
                 echo json_encode(array("msg" => "usuario actualizado"));
-            } catch(PDOException $ex) {
-                echo 'Error conectando a la BBDD. '.$ex->getMessage(); 
+            } catch (PDOException $ex) {
+                echo 'Error conectando a la BBDD. ' . $ex->getMessage();
             } catch (\Throwable $th) {
                 echo json_encode(array("msg" => "ocurrio un error: " . $th->getMessage()));
             }
         }
     }
 
-    public function eliminar_usuario(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    public function eliminar_usuario()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Content-Type: application/json');
             $id = json_decode(file_get_contents("php://input"), true);
             //echo json_encode(["id" => $id["id"]]);
@@ -101,7 +131,8 @@ class UsuarioController extends Controller
         }
     }
 
-    public function obtener_usuarios(){
+    public function obtener_usuarios()
+    {
         header('Content-Type: application/json');
         try {
             UserModel::connect_db();
@@ -111,5 +142,3 @@ class UsuarioController extends Controller
         }
     }
 }
-
-?>

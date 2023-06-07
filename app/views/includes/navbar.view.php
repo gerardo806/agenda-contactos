@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">📒 Agenda</a>
+    <a class="navbar-brand" href="#">📒 <?=$_SESSION['user']?> </a>
     <ul class="navbar-nav d-flex flex-row">
         <li class="nav-item mx-2">
           <a class="nav-link active" aria-current="page" id="inicio-nav" href="#">🏠 Inicio</a>
@@ -87,6 +87,15 @@
             </ul>
           </li>
 
+          <!--CERRAR SESSION-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            📂 Perfil
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" id="exit-session" href="#">⚫ Cerrar Sesión</a></li>
+            </ul>
+          </li>
         </ul>
         <form class="d-flex mt-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
