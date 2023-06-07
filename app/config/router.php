@@ -1,4 +1,5 @@
 <?php
+    session_start();
     class Router{
         public function __construct(){
             $this->matchRoute();

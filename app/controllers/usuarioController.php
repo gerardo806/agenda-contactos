@@ -4,6 +4,9 @@ require_once(__DIR__ . "/../models/user.model.php");
 
 class UsuarioController extends Controller 
 {
+    public function login(){
+        return $this->render("login", "usuarios");
+    }
     public function nuevo_usuario(){
         return $this->render("nuevo_usuario", "usuarios");
     }
