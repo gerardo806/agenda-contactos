@@ -39,7 +39,7 @@ $btn_save.addEventListener("click", (e) => {
       res
         .then((data) => {
           console.log(data);
-          if (data["msg"] === "1") {
+          if (data["msg"] === 1) {
             getView("usuario", "lista_usuarios", () => {
               insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
             });
