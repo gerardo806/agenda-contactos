@@ -31,17 +31,22 @@ $inicio.addEventListener("click", (e) => {
 });
 
 $contacto_nav.addEventListener("click", (e) => {
-    getView("contact", "nuevo_contacto", () => {});
+    getView("contact", "nuevo_contacto", () => {
+        insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/contact/nuevo_contacto.view.js`);
+    });
 });
 
 //***********CONTACTOS****************
 $nuevo_contacto.addEventListener("click", (e) => {
-    getView("contact", "nuevo_contacto", () => {});
+    getView("contact", "nuevo_contacto", () => {
+        insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/contact/nuevo_contacto.view.js`);
+    });
 });
 
 $contactos.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en contactos...");
+    getView("contact", "lista_contactos", () => {
+        //
+    });
 });
 
 //**********USUARIOS****************
@@ -59,18 +64,19 @@ $usuarios.addEventListener("click", (e) => {
 
 //**********ROL****************
 $nuevo_rol.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en nuevo-rol...");
+    getView("usuario", "nuevo_rol", () => {
+        //insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
+    });
 });
 
 $config_rol.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en config-rol...");
+    //
 });
 
 $roles.addEventListener("click", (e) => {
-    //e.preventDefault();
-    console.log("click en roles...");
+    getView("usuario", "lista_roles", () => {
+        //insertScript(`http://localhost/agenda-contactos-php-mysql/public/assets/js/usuario/lista_usuarios_view.js`);
+    });
 });
 
 //**********PERMISOS****************

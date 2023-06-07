@@ -13,21 +13,21 @@
                             <div class="mb-3">
                                 <label class="form-label w-100">
                                     Nombre
-                                    <input type="text" class="form-control mt-2" aria-describedby="emailHelp">
+                                    <input type="text" id="nombreSimpleContacto" class="form-control mt-2" aria-describedby="emailHelp">
                                 </label>
                                 <div id="emailHelp" class="form-text">Elija un nombre simple.</div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label w-100">
                                     Nombres
-                                    <input type="text" class="form-control mt-2" aria-describedby="emailHelp">
+                                    <input type="text" id="nombresContacto" class="form-control mt-2" aria-describedby="emailHelp">
                                 </label>
                                 <div id="emailHelp" class="form-text">Los nombres deben ser propios.</div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label w-100">
                                     Apellidos
-                                    <input type="text" class="form-control mt-2" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control mt-2" id="apellidosContactos" aria-describedby="emailHelp">
                                 </label>
                                 <div id="emailHelp" class="form-text">Los apellidos deben ser propios.</div>
                             </div>
@@ -36,11 +36,8 @@
                             <div class="mb-3">
                                 <label class="form-label w-100">
                                     Tipo de Contacto
-                                    <select class="form-select mt-2" aria-label="Default select example">
+                                    <select class="form-select mt-2" id="selectTipoContacto" aria-label="Default select example">
                                         <option selected>Seleccionar Contacto</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
                                     </select>
                                 </label>
                                 <div id="emailHelp" class="form-text">Menú de tipo de contacto.</div>
@@ -49,11 +46,11 @@
                             <div class="mb-3">
                                 <label class="form-label w-100">
                                     Contactos
-                                    <input type="text" class="form-control mt-2" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control mt-2" id="contactoPersonal" aria-describedby="emailHelp">
                                 </label>
                                 <div id="emailHelp" class="form-text">El contacto se basa al tipo de contacto.</div>
                             </div>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label class="form-label w-100">
                                     Grupo
                                     <select class="form-select mt-2" aria-label="Default select example">
@@ -64,14 +61,14 @@
                                     </select>
                                 </label>
                                 <div id="emailHelp" class="form-text">Clasificación de contacto por grupos.</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary w-100">Guardar</button>
+                    <button type="button" id="btn_save_contacto" class="btn btn-primary w-100">Guardar</button>
                 </form>
             </section>
             <footer class="card-footer text-muted bg-dark text-light">
-                <a class="link-light" href="#">
+                <a class="link-light" href="#" id="tabla-contacto">
                     Ver tabla de contactos
                 </a>
             </footer>

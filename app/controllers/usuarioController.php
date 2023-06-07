@@ -38,13 +38,6 @@ class UsuarioController extends Controller
         }
     }
 
-    public function exit_usuario(){
-        session_start();
-		session_unset();
-		unset($_SESSION["user"]);
-		session_destroy();
-    }
-
     public function guardar_usuario()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -140,5 +133,14 @@ class UsuarioController extends Controller
         } catch (\Throwable $th) {
             echo json_encode(array("error" => $th->getMessage()));
         }
+    }
+
+    //Rol
+    public function nuevo_rol(){
+        return $this->render("nuevo_rol", "usuarios");
+    }
+
+    public function lista_roles(){
+        return $this->render("lista_roles", "usuarios");
     }
 }
