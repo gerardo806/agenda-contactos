@@ -51,7 +51,7 @@ class UsuarioController extends Controller
             header('Content-Type: application/json');
             $data = json_decode(file_get_contents("php://input"), true);
 
-            $user = [
+            /* $user = [
                 "id_usuario" => $data['id_usuario'],
                 "nombreUsuario" => $data['nombreUsuario'],
                 "nombreCompleto" => $data['nombreCompleto'],
@@ -60,13 +60,17 @@ class UsuarioController extends Controller
                 //"claveEncriptada" => password_hash($data['clave'], PASSWORD_BCRYPT)
             ];
             
-            echo json_encode($user);
+            echo json_encode($user); */
             
-            /* $new_user = new UserModel(
+            $new_user = new UserModel( 
                 $data['nombreUsuario'], 
                 $data['nombreCompleto'], 
-                $data['correo'], $data['clave']
+                $data['correo'], 
+                empty($data['clave'])?'': $data['clave']
             );
+            
+            $new_user->setId_usuario($data['id_usuario']);
+
             try {
                 $new_user->save();
                 echo json_encode(array("msg" => "usuario actualizado"));
@@ -74,7 +78,7 @@ class UsuarioController extends Controller
                 echo 'Error conectando a la BBDD. '.$ex->getMessage(); 
             } catch (\Throwable $th) {
                 echo json_encode(array("msg" => "ocurrio un error: " . $th->getMessage()));
-            } */
+            }
         }
     }
 

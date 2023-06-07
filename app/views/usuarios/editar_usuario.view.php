@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="btn_update" type="button" class="btn btn-primary w-100">
+                    <button id="btn_save" type="button" class="btn btn-primary w-100">
                         Actualizar
                     </button>
                 </form>

@@ -4,7 +4,7 @@ localStorage.clear();
 user_local = JSON.parse(user_local);
 
 //fields form
-var $btn_update = document.getElementById("btn_update");
+var $btn_save = document.getElementById("btn_save");
 
 var $nombreUsuario = document.getElementById("nombreUsuario"),
   $nombreCompleto = document.getElementById("nombreCompleto"),
@@ -24,7 +24,7 @@ $nombreCompleto.value = user_local["nombreCompleto"];
 $correo.value = user_local["correo"];
 $id_usuario.value = user_local["id_usuario"];
 
-$btn_update.addEventListener("click", (e) => {
+$btn_save.addEventListener("click", (e) => {
   if ($nombreUsuario.value === "") warningFieldEmpty("Nombre Usuario");
   else if ($nombreCompleto.value === "") warningFieldEmpty("Nombre Completo");
   else if ($correo.value === "") warningFieldEmpty("Correo");
