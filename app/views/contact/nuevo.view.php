@@ -37,7 +37,7 @@
                                 <label class="form-label w-100">
                                     Tipo de Contacto
                                     <select class="form-select mt-2" id="selectTipoContacto" aria-label="Default select example">
-                                        <option selected>Seleccionar Contacto</option>
+                                        <option value="0" selected>Seleccionar Contacto</option>
                                     </select>
                                 </label>
                                 <div id="emailHelp" class="form-text">Menú de tipo de contacto.</div>
