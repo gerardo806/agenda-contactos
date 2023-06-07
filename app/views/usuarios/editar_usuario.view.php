@@ -1,5 +1,5 @@
 <div class="mt-4" id="nuevo-usuario">
-    <h1 class="text-center">Nuevo Usuario</h1>
+    <h1 class="text-center">Editar Usuario</h1>
     <div class="col-lg-6 col-md-6 col-sm-12 offset-md-3 offset-lg-3 mt-3">
         <article class="card">
             <header class="card-header bg-dark text-white">
@@ -53,8 +53,8 @@
                             </div>
                         </div>
                     </div>
-                    <button id="btn_save" type="button" class="btn btn-primary w-100">
-                        Guardar
+                    <button id="btn_update" type="button" class="btn btn-primary w-100">
+                        Actualizar
                     </button>
                 </form>
             </section>

@@ -1,4 +1,4 @@
-const $btn_save = document.getElementById("btn_save");
+const $btn_update = document.getElementById("btn_update");
 
 const $nombreUsuario = document.getElementById("nombreUsuario"),
   $nombreCompleto = document.getElementById("nombreCompleto"),
@@ -44,5 +44,5 @@ $btn_update.addEventListener("click", (e) => {
 $enlace_tabla.addEventListener("click", (e) => {
   getView("usuario", "lista_usuarios", () => {
     insertScript(`${url}assets/js/usuario/lista_usuarios_view.js`);
-  });
+  })
 });

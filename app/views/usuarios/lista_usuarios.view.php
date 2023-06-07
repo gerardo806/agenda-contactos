@@ -14,5 +14,3 @@
   <tbody id="lista-usuarios"></tbody>
 </table>
 </div>
-
-<a class="btn btn-primary" href="#">📝</a>

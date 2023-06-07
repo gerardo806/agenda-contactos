@@ -70,7 +70,7 @@ function insertScript(url){
     $div_script.innerHTML = "";
     const $script = document.createElement("script");
     $script.src = url;
-    $script.type = "text/javascript";
+    $script.type = "application/javascript";
     $div_script.appendChild($script);
 }
 

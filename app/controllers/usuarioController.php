@@ -8,6 +8,10 @@ class UsuarioController extends Controller
         return $this->render("nuevo_usuario", "usuarios");
     }
 
+    public function editar_usuario(){
+        return $this->render("editar_usuario", "usuarios");
+    }
+
     public function lista_usuarios(){
         return $this->render("lista_usuarios", "usuarios");
     }

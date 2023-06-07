@@ -21,8 +21,17 @@ requestGet("usuario", "obtener_usuarios")
                 const $btn_edit = $tr.querySelector(".edit"),
                     $btn_delete = $tr.querySelector(".delete");
                 
-                $btn_edit.addEventListener("click", (e) => {console.log("edit")});
-                $btn_delete.addEventListener("click", (e) => {console.log("delete")});
+                $btn_edit.addEventListener("click", (e) => {
+                    getView("usuario", "editar_usuario", () => {
+                        insertScript(`${url}assets/js/usuario/editar_usuario.view.js`);
+                    });
+
+                    
+                });
+
+                $btn_delete.addEventListener("click", (e) => {
+                    console.log("delete")
+                });
 
                 fragment.appendChild($tr);
             }
