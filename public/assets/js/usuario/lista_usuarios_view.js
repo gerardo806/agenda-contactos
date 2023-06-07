@@ -2,7 +2,7 @@
 
 requestGet("usuario", "obtener_usuarios")
     .then((response) => {
-        console.log(response);
+        //console.log(response);
         const $tbody = document.getElementById("lista-usuarios"),
             fragment = document.createDocumentFragment();
         
@@ -26,7 +26,11 @@ requestGet("usuario", "obtener_usuarios")
                         insertScript(`${url}assets/js/usuario/editar_usuario.view.js`);
                     });
 
-                    
+                    delete user["editar"];
+                    delete user["eliminar"];
+
+                    let user_serialized = JSON.stringify(user);
+                    localStorage.setItem("user", user_serialized);
                 });
 
                 $btn_delete.addEventListener("click", (e) => {

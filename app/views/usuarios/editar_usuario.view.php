@@ -51,6 +51,11 @@
                                 </label>
                                 <div class="form-text">Las claves deben ser iguales</div>
                             </div>
+
+                            <div class="mb-3">
+                            <input name="id_usuario" id="id_usuario" type="hidden"
+                                        class="form-control mt-2">
+                            </div>
                         </div>
                     </div>
                     <button id="btn_update" type="button" class="btn btn-primary w-100">
